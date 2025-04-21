@@ -66,7 +66,7 @@ const Projects = () => {
     {
       title: 'Pukhtoon Solutions Hub',
       description: 'The official website for Pukhtoon Solutions Hub, my previous company. It showcases their services, portfolio, and contact information with a modern, responsive design. Built using React, Tailwind CSS, and MUI.',
-      link: 'https://pukhtoon-solutions-hub-website-react.vercel.app/form',
+      link: 'https://pukhtoon-solutions-hub-website-react.vercel.app/',
       image: pshImage,
       techStack: ['React', 'Tailwind CSS', 'MUI'],
     },
@@ -225,6 +225,7 @@ const Projects = () => {
                   {project.link && (
                     <Box sx={{ p: 2, pt: 0 }}>
                       <CustomButton
+                        component="a"
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"

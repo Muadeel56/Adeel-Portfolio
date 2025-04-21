@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useTheme } from '../../ThemeContext';
 
 const SectionTitle = ({ title }) => {
-  const { mode } = useTheme();
+  const { mode, theme } = useTheme();
 
   const titleVariants = {
     hidden: { opacity: 0, scale: 0.8 },
@@ -20,12 +20,8 @@ const SectionTitle = ({ title }) => {
           fontFamily: '"Poppins", sans-serif',
           fontWeight: 700,
           fontSize: { xs: '1.8rem', sm: '2.2rem', md: '2.8rem', lg: '3.2rem' },
-          background: mode === 'light'
-            ? 'linear-gradient(90deg, #1a1a1a, #4a9999)'
-            : 'linear-gradient(90deg, #e0e0e0, #ff4500)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          textShadow: `3px 3px 10px ${mode === 'light' ? 'rgba(0, 0, 0, 0.3)' : 'rgba(255, 69, 0, 0.4)'}`,
+          color: theme.palette.text.primary, // Use theme's text color for readability
+          textShadow: `3px 3px 10px ${theme.palette.primary.main}40`, // Use primary color for shadow
           mb: { xs: 3, sm: 4, md: 5 },
           position: 'relative',
           '&:after': {
@@ -36,9 +32,7 @@ const SectionTitle = ({ title }) => {
             transform: 'translateX(-50%)',
             width: '100px',
             height: '4px',
-            background: mode === 'light'
-              ? 'linear-gradient(90deg, #4a9999, #1a1a1a)'
-              : 'linear-gradient(90deg, #ff4500, #e0e0e0)',
+            background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`, // Use theme's gradient
             borderRadius: '2px',
           },
         }}

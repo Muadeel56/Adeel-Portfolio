@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@mui/material';
 import { useTheme } from '../../ThemeContext';
 
-const CustomButton = ({ children, disabled, onClick, type, sx }) => {
+const CustomButton = ({ children, disabled, onClick, type, sx, href, target, rel }) => {
   const { mode } = useTheme();
 
   return (
@@ -11,6 +11,10 @@ const CustomButton = ({ children, disabled, onClick, type, sx }) => {
       variant="contained"
       disabled={disabled}
       onClick={onClick}
+      component={href ? 'a' : 'button'} // Render as <a> if href is provided
+      href={href} // Pass href to make it a link
+      target={target} // Pass target for opening in new tab
+      rel={rel} // Pass rel for security attributes
       sx={{
         fontFamily: '"Poppins", sans-serif',
         fontWeight: 500,
@@ -30,7 +34,7 @@ const CustomButton = ({ children, disabled, onClick, type, sx }) => {
             : 'linear-gradient(45deg, #e03d00, #d0d0d0)',
           boxShadow: `0px 6px 16px ${mode === 'light' ? 'rgba(0, 0, 0, 0.3)' : 'rgba(255, 69, 0, 0.4)'}`,
         },
-        ...sx,
+        ...sx, // Merge custom sx props to allow overrides from Projects component
       }}
     >
       {children}
